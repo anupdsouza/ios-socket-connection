@@ -11,11 +11,12 @@ struct ContentView: View {
     @StateObject private var socketService = SocketService()
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        VStack(spacing: 20) {
+            HStack {
+                Text("Server status:")
+                Image(systemName: "globe")
+                    .foregroundColor(socketService.connectedToServer() ? .green : .red)
+            }
             HStack {
                 Button("Connect") {
                     socketService.connectToServer()
