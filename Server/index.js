@@ -14,6 +14,7 @@ server.listen(PORT, () => {
 // User connections
 io.on('connection', (socket) => {
   console.log(`=> A User connected`);
+  socket.emit('userConnected', socket.id);
 
   // User disconnections
   socket.on('disconnect', () => {
