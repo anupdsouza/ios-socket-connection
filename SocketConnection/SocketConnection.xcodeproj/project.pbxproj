@@ -11,6 +11,7 @@
 		E4D3B0412ADD1BF70094BAE4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D3B0402ADD1BF70094BAE4 /* ContentView.swift */; };
 		E4D3B0432ADD1BF90094BAE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4D3B0422ADD1BF90094BAE4 /* Assets.xcassets */; };
 		E4D3B0462ADD1BF90094BAE4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4D3B0452ADD1BF90094BAE4 /* Preview Assets.xcassets */; };
+		E4D3B04E2ADD24580094BAE4 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = E4D3B04D2ADD24580094BAE4 /* SocketIO */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4D3B04E2ADD24580094BAE4 /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = SocketConnection;
+			packageProductDependencies = (
+				E4D3B04D2ADD24580094BAE4 /* SocketIO */,
+			);
 			productName = SocketConnection;
 			productReference = E4D3B03B2ADD1BF70094BAE4 /* SocketConnection.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,9 @@
 				Base,
 			);
 			mainGroup = E4D3B0322ADD1BF70094BAE4;
+			packageReferences = (
+				E4D3B04C2ADD24580094BAE4 /* XCRemoteSwiftPackageReference "ios-socket" */,
+			);
 			productRefGroup = E4D3B03C2ADD1BF70094BAE4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -337,6 +345,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E4D3B04C2ADD24580094BAE4 /* XCRemoteSwiftPackageReference "ios-socket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/anupdsouza/ios-socket.io-client-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E4D3B04D2ADD24580094BAE4 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E4D3B04C2ADD24580094BAE4 /* XCRemoteSwiftPackageReference "ios-socket" */;
+			productName = SocketIO;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E4D3B0332ADD1BF70094BAE4 /* Project object */;
 }
