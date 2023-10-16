@@ -3,3 +3,5 @@ SocketConnection/SocketConnection.xcodeproj/project.xcworkspace/contents.xcworks
 SocketConnection/SocketConnection.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
 SocketConnection/SocketConnection.xcodeproj/project.xcworkspace/xcuserdata/adso0001.xcuserdatad/UserInterfaceState.xcuserstate
 SocketConnection/SocketConnection.xcodeproj/xcuserdata/adso0001.xcuserdatad/xcschemes/xcschememanagement.plist
+/Server/node_modules
+*.xcbkptlist
