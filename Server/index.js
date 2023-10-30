@@ -1,9 +1,11 @@
 const express = require('express');
 const http = require('http');
-const socketIO = require('socket.io');
+// const socketIO = require('socket.io');
 const app = express();
 const server = http.createServer(app);
-const io = socketIO(server);
+// const io = socketIO(server);
+const io = require('socket.io')(http, {'pingInterval': 2000, 'pingTimeout': 5000});
+
 const PORT = 3000;
 
 server.listen(PORT, () => {

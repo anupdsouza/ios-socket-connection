@@ -17,6 +17,8 @@ final class SocketService: ObservableObject {
     private let socketURL = URL(string: "http://localhost:3000")!
     private var namespace: String?
     private let loggingEnabled: Bool = false
+    private var timer = Timer()
+    private var seconds: Int = 0
     @Published private var socketState = SocketState.disconnected
     
     init() {
@@ -51,7 +53,7 @@ extension SocketService {
                 print("client => received event: \(SocketEvents.userConnected), id(other user): \(data)")
             }
         }
-                
+        
         socket?.on(SocketEvents.userDisconnected) { [weak self] data, _ in
             print("client => received event: \(SocketEvents.userDisconnected)")
             guard let data = data.first as? String else { return }
@@ -62,6 +64,10 @@ extension SocketService {
                 print("client => received event: \(SocketEvents.userDisconnected), id(other user): \(data)")
             }
         }
+        
+        socket?.on("disconnect", callback: { data, _ in
+            print("reason: \(data)")
+        })
     }
 }
 
@@ -70,15 +76,32 @@ extension SocketService {
     
     func connectToServer() {
         closeConnection()
+        startTimer()
         establishConnection()
     }
     
     func disconnectFromServer() {
+        stopTimer()
         closeConnection()
     }
     
     func connectedToServer() -> Bool {
         self.socketState == .userConnected
+    }
+    
+    private func startTimer() {
+        stopTimer()
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateStatus), userInfo: nil, repeats: true)
+    }
+    
+    private func stopTimer() {
+        seconds = 0
+        timer.invalidate()
+    }
+    
+    @objc private func updateStatus() {
+        seconds += 1
+        print("Socket connection (\(seconds): \(String(describing: socketManager?.status))")
     }
     
     private func establishConnection() {
